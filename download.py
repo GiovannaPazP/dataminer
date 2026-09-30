@@ -35,7 +35,7 @@ for ano in anos:
     #checagem para ver se tem coluna faltante
     faltantes = [c for c in colunas_interesse if c not in df.columns]
     if faltantes:
-        aviso[ano] = faltantes
+        avisos[ano] = faltantes
 
     #reindex garante que se alguma coluna não existe
     #naquele ano ela entra como nan ao inves de quebrar o script
