@@ -1,7 +1,5 @@
 
 
-*.parquet
-
 __pycache__/
 
 sih_mg_2025_3_control.parquet
