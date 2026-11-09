@@ -1,9 +1,9 @@
 import pandas as pd
 
-anos = range(2022, 2026)
+anos = range(2016, 2026)
 meses = range(1, 13)
 
-PASTA_ORIGEM = "dados"
+PASTA_ORIGEM = "dados_atualizados"
 PASTA_DESTINO = "dados_anos"
 
 for ano in anos:
@@ -20,7 +20,6 @@ for ano in anos:
                 continue
 
             df["ano"] = ano
-            df["mes"] = mes
 
             dfs.append(df)
 
@@ -34,9 +33,9 @@ for ano in anos:
         
         #pega as colunas com mais de um tipo (object) devido as duas formas
         #de baixar e converte para apenas string
-        for c in df_ano.select_dtypes(include="object").columns:
-            df_ano[c] = df_ano[c].astype("string")
+        '''for c in df_ano.select_dtypes(include="object").columns:
+            df_ano[c] = df_ano[c].astype("string")'''
 
         df_ano.to_parquet(f"{PASTA_DESTINO}/sih_mg_{ano}.parquet", index=False)
 
-        print(f"{ano}: {df_ano.shape}")
+        print(f"{ano} completa")

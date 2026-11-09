@@ -2,7 +2,7 @@ import pysus
 import pandas as pd
 
 
-colunas_interesse = [
+'''colunas_interesse = [
     'UF_ZI', 'ESPEC', 'IDENT', 'CEP', 'MUNIC_RES', 'NASC', 'SEXO',
     'MARCA_UTI', 'DIAR_ACOM', 'PROC_SOLIC', 'PROC_REA', 'VAL_TOT',
     'DT_INTER', 'DT_SAIDA', 'DIAG_PRINC', 'DIAG_SECUN', 'COBRANCA',
@@ -22,14 +22,14 @@ colunas_interesse = [
 
 df = pd.read_parquet("sih_mg_2025_3_control.parquet")
 
-print(df.shape)
+print(df.shape)'''
 '''print(df.head())
 
 df = df.reindex(columns=colunas_interesse)
 print(df.shape, df.head())'''
-print(df['DIAGSEC1'].isna().sum())
+'''print(df['DIAGSEC1'].isna().sum())
 print(df['DIAGSEC1'].sample(20).to_list())
-print((df['DIAGSEC1'] == '').sum())
+print((df['DIAGSEC1'] == '').sum())'''
 
 
 #df_endo_principal = df[df['DIAG_PRINC'].str.startswith('N80', na=False)]
@@ -44,3 +44,12 @@ diag_cols = [c for c in df.columns if 'DIAG' in c.upper()]
 print(diag_cols)
 print(df[diag_cols].head(20))
 '''
+
+anos = range(2016, 2026)
+PASTA_ORIGEM = "dados_anos"
+
+for ano in anos:
+    arquivo = f"{PASTA_ORIGEM}/sih_mg_{ano}.parquet"
+
+    df = pd.read_parquet(arquivo)
+    print(f"{ano}: {df.shape}")
