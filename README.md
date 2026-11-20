@@ -52,19 +52,10 @@ Os dados serão armazenados em `dados_anos`.
 
 # Enriquecimento
 
-O enriquecimento dos dados do SIH/SUS associa códigos a descrições de diagnósticos, procedimentos, características sociodemográficas e informações geográficas, facilitando a interpretação dos registros e sua utilização nas análises. O processamento segue a documentação da PCDaS e utiliza arquivos auxiliares disponíveis nesta mesma fonte, bem como a malha de municípios do IBGE. Além disso, são criadas variáveis derivadas, como faixas etárias e ano de internação.
+O enriquecimento dos dados do SIH/SUS associa códigos a descrições de diagnósticos, procedimentos, características sociodemográficas e informações geográficas, facilitando a interpretação dos registros e sua utilização nas análises. O processamento segue a documentação da PCDaS e utiliza arquivos auxiliares disponíveis nesta mesma fonte (`ETNIA`, `NACION3D`, `CBO`, `LEITOS` e `TB_SIGTAB`), bem como a malha de municípios do IBGE. Além disso, são criadas variáveis derivadas, como faixas etárias e ano de internação.
 
-### Correspondência entre colunas e colunas geradas
-
-| Coluna(s) de origem | Coluna(s) gerada(s) |
-|---|---|
-| `SEQ_AIH5`, `N_AIH`, `IDENT`, `VINCPREV`, `NUM_FILHOS`, `DIAS_PERM`, `CAR_INT`, `SEXO`, `MARCA_UTI`, `IND_VDRL`, `COD_IDADE`, `MORTE`, `INSTRU`, `CONTRACEP1`, `CONTRACEP2`, `GESTRISCO`, `COMPLEX`, `RACA_COR` | Respectivas colunas `def_*` |
-| `ETNIA` | `def_etnia` |
-| `NACIONAL` | `def_nacionalidade` |
-| `CBOR` | `def_cbo` |
-| `ESPEC` | `def_leitos` |
-| `PROC_REA`, `PROC_SOLIC` | Descrições dos procedimentos (tabela `TB_SIGTAB`) |
-| `MUNIC_MOV` | `cidade_int`, `estado_int`, `pais_int` |
-| `MUNIC_RES` | `cidade_res`, `estado_res`, `pais_res` |
-~~~~
-
+| Grupo | Campos e resultados |
+|:---|:---|
+| **Mapas diretos** | `SEQ_AIH5`, `N_AIH`, `IDENT`, `VINCPREV`, `NUM_FILHOS`, `DIAS_PERM`, `CAR_INT`, `SEXO`, `MARCA_UTI`, `IND_VDRL`, `COD_IDADE`, `MORTE`, `INSTRU`, `CONTRACEP1`, `CONTRACEP2`, `GESTRISCO`, `COMPLEX` e `RACA_COR` geram suas respectivas colunas `def_*`. Os mapas seguem a documentação do SIH/SUS da PCDaS. |
+| **CSV de referência** | `ETNIA` → `def_etnia`;<br>`NACIONAL` → `def_nacionalidade` (`NACION3D`);<br>`CBOR` → `def_cbo` (`CBO`);<br>`ESPEC` → `def_leitos` (`LEITOS`);<br>`PROC_REA` e `PROC_SOLIC` → descrições de procedimentos (`TB_SIGTAB`). |
+| **Geografia** | `MUNIC_MOV` → `cidade_int`, `estado_int`, `pais_int`;<br>`MUNIC_RES` → `cidade_res`, `estado_res`, `pais_res`.<br>A DTB 2023 fornece os códigos e nomes dos municípios; a UF é derivada dos dois primeiros dígitos do código IBGE e o país é definido como Brasil para os municípios encontrados. |
