@@ -52,7 +52,7 @@ Os dados serão armazenados em `dados_anos`.
 
 # Enriquecimento
 
-O enriquecimento dos dados do SIH/SUS associa códigos a descrições de diagnósticos, procedimentos, características sociodemográficas e informações geográficas, facilitando a interpretação dos registros e sua utilização nas análises. O processamento segue a documentação da PCDaS e utiliza arquivos auxiliares de referência e a malha de municípios do IBGE (DTB 2023). Também são criadas variáveis derivadas, como faixas etárias e ano de internação.
+O enriquecimento dos dados do SIH/SUS associa códigos a descrições de diagnósticos, procedimentos, características sociodemográficas e informações geográficas, facilitando a interpretação dos registros e sua utilização nas análises. O processamento segue a documentação da PCDaS e utiliza arquivos auxiliares disponíveis nesta mesma fonte, bem como a malha de municípios do IBGE. Além disso, são criadas variáveis derivadas, como faixas etárias e ano de internação.
 
 ### Correspondência entre colunas e colunas geradas
 
@@ -66,7 +66,5 @@ O enriquecimento dos dados do SIH/SUS associa códigos a descrições de diagnó
 | `PROC_REA`, `PROC_SOLIC` | Descrições dos procedimentos (tabela `TB_SIGTAB`) |
 | `MUNIC_MOV` | `cidade_int`, `estado_int`, `pais_int` |
 | `MUNIC_RES` | `cidade_res`, `estado_res`, `pais_res` |
-
-As decodificações diretas seguem os mapas do SIH/SUS. As correspondências de nacionalidade, ocupação e leitos utilizam arquivos de referência específicos. Para os municípios, são acrescentados nome da cidade, estado e país, distinguindo o local de internação (`MUNIC_MOV`) do município de residência (`MUNIC_RES`).
 ~~~~
 
